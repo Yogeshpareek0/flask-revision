@@ -14,6 +14,14 @@ def printval():
     val2 = request.json["val2"]
     if operation=="multi":
         result = val1*val2
+    elif operation=="add":
+        result = val1+val2
+    elif operation=="sub":
+        result = val1-val2
+    elif operation=="div":
+        result = val1/val2
+    else:
+        return 'wrong input'
     return str(f'the operation is {operation} and the result is {result}')
 
 # @app.route('/calculator',methods = ["GET"])
