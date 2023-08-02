@@ -1,16 +1,20 @@
-from flask import Flask , request , render_template,jsonify
-import json
+from flask import Flask , request , render_template
 
 app = Flask(__name__)
 
-@app.route('/',methods = ["GET"])
+@app.route('/')
 def welcome():
     return 'welcome to flask'
 
 @app.route('/printData',methods = ["POST"])
 def printval():
+    
+    operation = request.json["operation"]
     val1 = request.json["val1"]
-    return val1
+    val2 = request.json["val2"]
+    if operation=="multi":
+        result = val1*val2
+    return str(f'the operation is {operation} and the result is {result}')
 
 # @app.route('/calculator',methods = ["GET"])
 # def matfunc():
